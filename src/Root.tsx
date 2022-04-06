@@ -1,28 +1,34 @@
 import React, {useEffect, useState} from 'react';
-import {RenderCountComponent} from './RenderCountComponent';
+import {useRenderCount} from './useRenderCount';
+import {Stack} from '@mui/material';
 
-export const Root = (props: any) => {
+
+export const Root = () => {
     const [arr, setArr] = useState([0])
 
     useEffect(() => {
         setTimeout(() => {
-            setArr(arr.map(el => el))
-        }, 2000)
-    }, [arr])
+            setArr(a => [...a, 1])
+        }, 1000)
 
+    }, [arr])
+    const render = useRenderCount()
     return (
         <>
             <App arr={arr}/>
-            <RenderCountComponent {...props}/>
+            {render}
         </>
     )
 }
 
 
 const App = (props: any) => {
+    const render = useRenderCount(props)
     return (
         <>
-            <RenderCountComponent {...props}/>
+            {<Stack>
+                Parent Render Count: {render}
+            </Stack>}
         </>
     )
 }

@@ -4,23 +4,23 @@ import React, {useEffect, useState} from 'react';
 
 export const RenderCountComponent = React.memo((props) => {
 
-    const [count, setCount] = useState(0)
+    const [render, setRender] = useState(0)
 
     useEffect(() => {
-        setCount(c => c + 1)
+        setRender(c => c + 1)
     }, [props])
 
     return (
         <RenderCount>
             <Count>
-                {count}
+                {render}
             </Count>
             <StyledButton
                 variant="contained"
                 color="success"
-                onClick={() => setCount(c => c + 1)}
+                onClick={() => setRender(c => c + 1)}
             >
-                Render
+                Click to rerender
             </StyledButton>
         </RenderCount>
     )
