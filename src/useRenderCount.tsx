@@ -26,13 +26,13 @@ export const useRenderCount = (...values: any): number | React.ReactNode => {
         prevCountRef.current = state.length;
     }, [values]);
 
-    if (values.length) {
+    if (values.length > 0) {
         return render.parent
     }
 
     return <RenderCount>
         <Count>
-            {values.length ? render.parent : render.self}
+            {values.length > 0 ? render.parent : render.self}
         </Count>
         <StyledButton
             variant="contained"
